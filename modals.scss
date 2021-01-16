@@ -1,0 +1,275 @@
+@import "../clay/bootstrap/modal";
+
+//Standard Modal-Size
+$modal-lg: 586px;
+$modal-sm: 345px;
+$modal-padding: 24px;
+
+//NEW Modal ----------------------------------------------------
+.gwkp-modal {
+  @extend .modal;
+  @extend .fade;
+
+  &__dialog {
+    @extend .modal-dialog;
+    max-width: $modal-lg;
+    padding: 0;
+    top: 20%;
+    background: $modal-background;
+
+
+    @media (max-width: $screen-sm) {
+      max-width: $modal-sm;
+      margin: auto;
+      padding: 0;
+    }
+
+    @media (max-width: $screen-xs) {
+      margin: 10px auto;
+
+      //todo still in use?
+      // .button + .button {
+      // margin-top: 0;
+      //}
+    }
+
+    &__content {
+      @extend .modal-content;
+      border: none;
+      border-radius: 0;
+
+        &__header {
+        @extend .modal-header;
+        padding: $modal-padding $modal-padding 15px $modal-padding;
+        //display: table; don't think we need this?
+        border: none;
+
+        .close {
+          opacity: 1;
+          color: $colorPrimary100;
+          font-size: 3rem;
+          height: unset;
+          padding: 0;
+          margin-left: 20px;
+          margin-right: 0;
+
+          &:hover {
+            color: $modal-close-hover;
+          }
+        }
+
+        &__title {
+          @extend .modal-title;
+          padding: 0;
+          font-size: 2.8rem;
+          font-weight: bold;
+          line-height: 3rem;
+
+          @media (max-width: $screen-sm) {
+            font-size: 2rem;
+            line-height: 2.3rem;
+          }
+        }
+      }
+
+      &__body {
+        @extend .modal-body;
+
+        padding-left: $modal-padding;
+        padding-right: $modal-padding;
+      }
+
+      &__footer {
+        @extend .modal-footer;
+        padding: 42px $modal-padding $modal-padding $modal-padding;
+        border: none;
+      }
+    }
+  }
+}
+
+
+//Language-Selector
+.language-selector-modal {
+
+  &__dialog {
+
+    @media (min-width: $screen-sm) {
+      min-width: 700px;
+    }
+
+    &__container {
+
+      &__body {
+      padding-bottom: 23px;
+        ul {
+          list-style-type: none;
+
+          li {
+            border-top: 1px solid $language-border;
+            padding-bottom: 0 !important;
+
+            a {
+              color: $language-link !important;
+              display: inline-block;
+              padding: 9px 0 !important;
+
+              &:hover {
+                color: $colorPrimary100 !important;
+              }
+            }
+          }
+        }
+
+        img {
+          width: 336px;
+        }
+
+
+        @media (max-width: $screen-sm) {
+
+          .language-container {
+            padding: 0;
+          }
+
+          .m-language-selector__map {
+            margin-bottom: 16.2px;
+
+            img {
+              width: 280px;
+            }
+          }
+
+          ul {
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            column-count: 2;
+            -webkit-column-gap: 29px;
+            -moz-column-gap: 29px;
+            column-gap: 29px;
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+//OLD Modal ----------------------------------------------------
+// this style is not clearly defined in lexicon
+// --> the problem .fad.in has the same priority, so it is ambiguous which one would be taken
+
+#gwNewsModal {
+
+  position: fixed !important;
+
+  .modal-dialog {
+    position: relative !important;
+    margin-top: 10% !important;
+    //background: transparent !important;
+    padding: 0 !important;
+  }
+}
+
+.modal-dialog {
+
+  //GW-News
+  &--alt {
+    width: 680px;
+
+    @media (max-width: $screen-xs-max) {
+      width: 90%;
+    }
+  }
+}
+
+
+#languageModal {
+
+  ul {
+    list-style-type: none;
+
+    li {
+      border-top: 1px solid #E9EAEB;
+      padding-bottom: 0;
+
+      a {
+        color: #343434;
+        display: inline-block;
+        padding: 9px 0;
+        &:hover{
+          color:#f60;
+        }
+      }
+    }
+  }
+
+  h4 {
+    font-weight: bold;
+  }
+
+  .modal-header {
+    text-align: left;
+    background-color: #fff;
+  }
+
+  img {
+    width:336px;
+  }
+}
+
+
+
+@media only screen and (max-width: 991px) {
+
+  #languageModal {
+
+    .m-language-selector__map {
+      margin-bottom: 30px;
+    }
+  }
+}
+@media only screen and (min-width: 481px) {
+
+  .language-selector-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+
+  #languageModal {
+
+    .modal-dialog {
+      width: 700px;
+    }
+  }
+}
+
+@media (max-width: 767.9px) {
+
+  #languageModal {
+
+    .language-container {
+      padding: 0;
+    }
+
+    .m-language-selector__map{
+      margin-bottom: 16.2px;
+
+      img {
+        width: 280px;
+      }
+    }
+
+      ul {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+      -webkit-column-gap: 29px;
+      -moz-column-gap: 29px;
+      column-gap: 29px;
+      padding-left: 0;
+      }
+  }
+}
